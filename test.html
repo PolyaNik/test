@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 24px 20px;
+            font-size: 18px;
+            font-weight: 600;
+            color: black;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            margin-bottom: 15px;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.1s, box-shadow 0.2s;
+            -webkit-tap-highlight-color: rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="platform" id="platform">Определение платформы...</div>
+        
+        <button class="btn btn-replace" onclick="testReplace()">
+            window.location.replace()
+        </button>
+        
+        <button class="btn btn-href" onclick="testHref()">
+            window.location.href
+        </button>
+        
+        <a href="https://test-pay.lwo-dev.by/order/312877" class="btn btn-link">
+            Обычная ссылка
+        </a>
+    </div>
+
+    <script>
+        function detectPlatform() {
+            const ua = navigator.userAgent;
+            if (/iPad|iPhone|iPod/.test(ua)) return 'iOS';
+            if (/Android/.test(ua)) return 'Android';
+            return 'Desktop';
+        }
+        
+        document.getElementById('platform').textContent = detectPlatform();
+        
+        function testReplace() {
+            window.location.replace('https://test-pay.lwo-dev.by/order/312877');
+        }
+        
+        function testHref() {
+            window.location.href = 'https://test-pay.lwo-dev.by/order/312877';
+        }
+    </script>
+</body>
+</html>
